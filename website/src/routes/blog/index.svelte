@@ -1,36 +1,30 @@
 <script context="module" lang="ts">
-  export function preload() {
-    return this.fetch(`blog.json`)
-      .then((r: { json: () => any }) => r.json())
-      .then((posts: { slug: string; title: string; html: any }[]) => {
-        return { posts };
-      });
+  export async function preload() {
+    const page = await this.fetch('blog-index.json').then((res) => res.json());
+    const posts = await this.fetch('blog/posts.json').then((res) => res.json());
+
+    return { page, posts };
   }
 </script>
 
 <script lang="ts">
-  export let posts: { slug: string; title: string; html: any }[];
+  export let page: { heading: string; body: any };
+  export let posts: { slug: string; heading: string; body: any }[];
 </script>
 
 <svelte:head>
-  <title>Blog</title>
+  <title>{page.heading}</title>
 </svelte:head>
 
-<h1>Recent posts</h1>
+<h1>{page.heading}</h1>
+
+<p>{@html page.body}</p>
 
 <ul>
   {#each posts as post}
-    <!-- we're using the non-standard `rel=prefetch` attribute to
-				tell Sapper to load the data for the page as soon as
-				the user hovers over the link or taps it, instead of
-				waiting for the 'click' event -->
-    <li><a rel="prefetch" href="blog/{post.slug}">{post.title}</a></li>
+    <li><a rel="prefetch" href="blog/{post.slug}">{post.heading}</a></li>
   {/each}
 </ul>
 
 <style>
-  ul {
-    margin: 0 0 1em 0;
-    line-height: 1.5;
-  }
 </style>

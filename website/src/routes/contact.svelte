@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
   export async function preload({ params, query }) {
-    const res = await this.fetch('index.json');
+    const res = await this.fetch('contact.json');
     const page = await res.json();
 
     return { page };
