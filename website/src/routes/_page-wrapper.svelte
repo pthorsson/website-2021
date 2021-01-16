@@ -1,10 +1,10 @@
 <script lang="ts">
+  import MetaTags from '../components/MetaTags.svelte';
+
   export let page: Website.Page;
 </script>
 
-<svelte:head>
-  <title>thorsson.dev | {page.slug}</title>
-</svelte:head>
+<MetaTags pageMetaData={page.metaData} />
 
 {#if page.heading}
   <h1>{page.heading}</h1>
