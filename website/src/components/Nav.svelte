@@ -1,17 +1,19 @@
-<script>
-  import navigation from "../../data/navigation.json";
+<script lang="ts">
+  import navigation from '../../data/navigation.json';
 
-  export let links = navigation.links;
+  let links: ContentTypes.Link[] = navigation.links;
 </script>
 
 <nav>
   <ul>
     {#each links as link}
-      <li>
-        <a class="nav-link" rel="prefetch" href={link.href}>
-          {link.label}
-        </a>
-      </li>
+      {#if link.href && link.text}
+        <li>
+          <a class="nav-link" rel="prefetch" href={link.href}>
+            {link.text}
+          </a>
+        </li>
+      {/if}
     {/each}
   </ul>
 </nav>
