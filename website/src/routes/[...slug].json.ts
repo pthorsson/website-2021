@@ -1,4 +1,4 @@
-import pages from '../../data/pages.json';
+import { pages } from '@data-file';
 
 export function get(req, res, next) {
   const { slug: slugParts } = req.params;

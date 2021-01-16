@@ -1,5 +1,5 @@
 <script lang="ts">
-  import settings from '../../data/settings.json';
+  import { settings } from '@data-file';
 
   export let siteSettings = settings as Partial<Website.Settings>;
   export let pageMetaData: Partial<Website.MetaData>;

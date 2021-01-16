@@ -1,12 +1,10 @@
 <script lang="ts">
-  import navigation from '../../data/navigation.json';
-
-  let links: ContentTypes.Link[] = navigation.links;
+  import { navItems } from '@data-file';
 </script>
 
 <nav>
   <ul>
-    {#each links as link}
+    {#each navItems as link}
       {#if link.href && link.text}
         <li>
           <a class="nav-link" rel="prefetch" href={link.href}>
