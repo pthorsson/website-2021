@@ -1,3 +1,12 @@
+require('dotenv').config({ path: '../.env' });
+
+if (!process.env.DATA_FILE) {
+  console.log('Env variable DATA_FILE not set - aborting');
+  process.exit(1);
+} else {
+  console.log(`Using data file "${process.env.DATA_FILE}"`);
+}
+
 import path from 'path';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
@@ -5,6 +14,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import url from '@rollup/plugin-url';
 import svelte from 'rollup-plugin-svelte';
 import babel from '@rollup/plugin-babel';
+import alias from '@rollup/plugin-alias';
 import json from '@rollup/plugin-json';
 import { terser } from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
@@ -15,6 +25,7 @@ import pkg from './package.json';
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
+const dataFilePath = `../data/${process.env.DATA_FILE}`;
 
 const onwarn = (warning, onwarn) =>
   (warning.code === 'MISSING_EXPORT' && /'preload'/.test(warning.message)) ||
@@ -31,6 +42,9 @@ export default {
       replace({
         'process.browser': true,
         'process.env.NODE_ENV': JSON.stringify(mode),
+      }),
+      alias({
+        entries: [{ find: '@data-file', replacement: dataFilePath }],
       }),
       svelte({
         preprocess: sveltePreprocess(),
@@ -92,6 +106,9 @@ export default {
       replace({
         'process.browser': false,
         'process.env.NODE_ENV': JSON.stringify(mode),
+      }),
+      alias({
+        entries: [{ find: '@data-file', replacement: dataFilePath }],
       }),
       svelte({
         preprocess: sveltePreprocess(),

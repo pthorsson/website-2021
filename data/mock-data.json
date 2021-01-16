@@ -1,0 +1,72 @@
+{
+  "settings": {
+    "baseTitle": "thorsson.dev",
+    "baseUrl": "https://thorsson.dev/",
+    "defaultMetaData": {
+      "description": "This is the default page description",
+      "keywords": "default keywords"
+    }
+  },
+  "navItems": [
+    { "text": "Portfolio", "href": "/portfolio" },
+    { "text": "Blog", "href": "/blog" },
+    { "text": "About page", "href": "/about" },
+    { "text": "Contact page", "href": "/contact" }
+  ],
+  "pages": [
+    {
+      "slug": "/_index",
+      "heading": "Hi there!",
+      "body": "This is the landing page",
+      "metaData": {}
+    },
+    {
+      "slug": "/about",
+      "heading": "About page",
+      "body": "This is the body of the about page",
+      "metaData": {
+        "title": "About page title"
+      }
+    },
+    {
+      "slug": "/contact",
+      "heading": "Contact page",
+      "body": "This is the body of the contact page",
+      "metaData": {
+        "title": "Contact page title"
+      }
+    },
+    {
+      "slug": "/portfolio",
+      "heading": "Portfolio",
+      "body": "Here are some portfolio items. <br><br> <a rel=\"prefetch\" href=\"/portfolio/item-1\">Portolfio item 1</a>",
+      "metaData": {
+        "title": "Portfolio title"
+      }
+    },
+    {
+      "slug": "/portfolio/item-1",
+      "heading": "Portfolio item 1",
+      "body": "This is portfolio item number 1",
+      "metaData": {
+        "title": "Portfolio item 1 title"
+      }
+    },
+    {
+      "slug": "/blog",
+      "heading": "Blog",
+      "body": "Here are some things I've written!",
+      "metaData": {
+        "title": "Blog title"
+      }
+    },
+    {
+      "slug": "/blog/post-1",
+      "heading": "Blog post 1",
+      "body": "This is blog post number 1",
+      "metaData": {
+        "title": "Blog post 1 title"
+      }
+    }
+  ]
+}
