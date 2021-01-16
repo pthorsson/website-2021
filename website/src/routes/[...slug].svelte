@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
   import preloadWrapper from './_preload-wrapper';
-  export const preload = preloadWrapper('_index');
+  export const preload = preloadWrapper();
 </script>
 
 <script lang="ts">

@@ -1,18 +1,17 @@
-import posts from '../../../data/blog-items.json';
+import pages from '../../data/pages.json';
 
 export function get(req, res, next) {
-  // the `slug` parameter is available because
-  // this file is called [slug].json.js
-  const { slug } = req.params;
+  const { slug: slugParts } = req.params;
 
-  const post = posts.find((post) => post.slug === slug);
+  const slug = `/${slugParts.join('/')}`;
+  const page = pages.find((p) => p.slug === slug);
 
-  if (post) {
+  if (page) {
     res.writeHead(200, {
       'Content-Type': 'application/json',
     });
 
-    res.end(JSON.stringify(post));
+    res.end(JSON.stringify(page));
   } else {
     res.writeHead(404, {
       'Content-Type': 'application/json',
