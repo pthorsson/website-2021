@@ -45,3 +45,9 @@ declare module ContentTypes {
     target?: string;
   };
 }
+
+declare module '@data-file' {
+  export const settings: Website.Settings;
+  export const navItems: ContentTypes.Link[];
+  export const pages: Website.Page[];
+}
