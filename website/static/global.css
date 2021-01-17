@@ -5,14 +5,12 @@
 }
 
 :root {
-  --base-margin: 10px;
-  --link-spacing: 10px;
-  --outer-gutter: 12px;
+  --baseline: 10px;
   --border-width: 3px;
   --color-dark: #454545;
   --color-light: #ffffff;
-  --body-font: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen,
-  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  --font-system: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  --font-mono: jetbrains-mono, monospace;
 }
 
 html,
@@ -33,15 +31,15 @@ html {
 
 input, button {
   color: var(--color-fg);
-  font-family: var(--body-font);
+  font-family: var(--font-system);
 }
 
 body {
   margin: 0;
-  font-family: var(--body-font);
-  font-size: 14px;
+  font-family: var(--font-system);
+  font-size: calc(var(--baseline) * 2);
   line-height: 1.5;
-  padding: var(--outer-gutter);
+  padding: 13px;
 }
 
 html,
@@ -56,13 +54,26 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: var(--font-mono);
   margin: 0 0 0.5em 0;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.2;
 }
 
 h1 {
-  font-size: 2em;
+  font-size: 2.25em;
+}
+
+h2 {
+  font-size: 1.75em;
+}
+
+h3 {
+  font-size: 1.25em;
+}
+
+h4, h5, h6 {
+  font-size: 1em;
 }
 
 a {
