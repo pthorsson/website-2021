@@ -1,7 +1,8 @@
+import { Middleware } from 'polka';
 import { pages } from '@data-file';
 
-export function get(req, res, next) {
-  const { slug: slugParts } = req.params;
+export const get: Middleware = (req, res) => {
+  const slugParts = (req.params.slug as unknown) as Array<string>;
 
   const slug = `/${slugParts.join('/')}`;
   const page = pages.find((p) => p.slug === slug);
@@ -23,4 +24,4 @@ export function get(req, res, next) {
       })
     );
   }
-}
+};
