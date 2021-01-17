@@ -25,7 +25,8 @@
       "heading": "About page",
       "body": "This is the body of the about page",
       "metaData": {
-        "title": "About page title"
+        "title": "About page title",
+        "keywords": "about page keywords"
       }
     },
     {
