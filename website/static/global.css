@@ -5,11 +5,14 @@
 }
 
 :root {
+  --base-margin: 10px;
   --link-spacing: 10px;
   --outer-gutter: 12px;
   --border-width: 3px;
-  --color-dark: #4a5463;
+  --color-dark: #454545;
   --color-light: #ffffff;
+  --body-font: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen,
+  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 html,
@@ -28,10 +31,14 @@ html {
 	color: var(--color-fg);
 }
 
+input, button {
+  color: var(--color-fg);
+  font-family: var(--body-font);
+}
+
 body {
   margin: 0;
-  font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: var(--body-font);
   font-size: 14px;
   line-height: 1.5;
   padding: var(--outer-gutter);
