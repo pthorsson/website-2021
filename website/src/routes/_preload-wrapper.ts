@@ -3,7 +3,11 @@ const preloadWrapper = (staticSlug?: string) =>
     const res = await this.fetch(`${staticSlug || params.slug.join('/')}.json`);
     const page = await res.json();
 
-    return { page };
+    if (res.status === 200) {
+      return { page };
+    }
+
+    this.error(404, 'Not found');
   };
 
 export default preloadWrapper;
