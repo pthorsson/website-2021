@@ -8,7 +8,7 @@
 
   $: pageTitle = pageMetaData?.title || defaultMetaData?.title || null;
   $: siteTitle = `${siteSettings?.baseTitle}${
-    pageTitle ? ` | ${pageTitle}` : ''
+    pageTitle ? ` | ${pageTitle}` : ''
   }`;
 
   let siteDescription =
