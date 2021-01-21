@@ -17,8 +17,10 @@ declare module Website {
   export type Page = {
     metaData: MetaData;
     slug: string;
+    intro: string;
     heading: string;
     body: string;
+    parent: string;
   };
 }
 
