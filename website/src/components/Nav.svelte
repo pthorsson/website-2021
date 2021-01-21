@@ -29,6 +29,11 @@
 </nav>
 
 <style type="text/scss">
+  :root {
+    --link-font-size: 1em;
+    --link-font-line-height: 1.3em;
+  }
+
   nav {
     display: flex;
     flex-direction: column;
@@ -66,7 +71,7 @@
       }
 
       a {
-        height: 26px;
+        height: var(--link-font-line-height);
         opacity: 1;
       }
     }
@@ -101,8 +106,9 @@
   a {
     display: block;
     position: relative;
-    font-size: 18px;
-    line-height: 26px;
+    font-size: var(--link-font-size);
+    font-family: var(--font-mono);
+    line-height: var(--link-font-line-height);
     height: 0px;
     opacity: 0;
     text-decoration: none;
@@ -111,6 +117,7 @@
     flex: 0 0 auto;
     color: var(--color-fg);
     white-space: nowrap;
+    background: var(--color-bg);
 
     &:hover {
       padding-right: 5px;

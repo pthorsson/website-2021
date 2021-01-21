@@ -18,8 +18,10 @@
 
   main {
     position: relative;
-    max-width: 56em;
+    max-width: calc(100% - (var(--baseline) * 20));
     padding: 2em;
     margin: 0 auto;
+    padding: 25vh calc(var(--baseline) * 10) 10vh calc(var(--baseline) * 10);
+    background: salmon;
   }
 </style>
