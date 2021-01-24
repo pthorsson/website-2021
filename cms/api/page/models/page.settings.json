@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages",
+  "info": {
+    "name": "Page"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "title": {
+      "type": "string"
+    },
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "pageType": {
+      "type": "enumeration",
+      "enum": [
+        "page",
+        "portfolio_item",
+        "blog_post"
+      ],
+      "default": "page",
+      "required": true
+    },
+    "metaData": {
+      "type": "component",
+      "repeatable": false,
+      "component": "data.meta-data"
+    },
+    "intro": {
+      "type": "text"
+    }
+  }
+}
