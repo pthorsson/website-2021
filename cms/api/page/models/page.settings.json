@@ -21,16 +21,18 @@
       "type": "string",
       "required": true
     },
+    "intro": {
+      "type": "text"
+    },
+    "displayChildren": {
+      "type": "boolean"
+    },
     "body": {
       "type": "richtext"
     },
     "pageType": {
       "type": "enumeration",
-      "enum": [
-        "page",
-        "portfolio_item",
-        "blog_post"
-      ],
+      "enum": ["page", "portfolio_item", "blog_post"],
       "default": "page",
       "required": true
     },
@@ -39,8 +41,13 @@
       "repeatable": false,
       "component": "data.meta-data"
     },
-    "intro": {
-      "type": "text"
+    "children": {
+      "collection": "page",
+      "via": "parent"
+    },
+    "parent": {
+      "model": "page",
+      "via": "children"
     }
   }
 }
