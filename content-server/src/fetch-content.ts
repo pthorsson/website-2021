@@ -1,14 +1,25 @@
-require('dotenv').config({ path: '../.env' });
-
 import fetch from 'node-fetch';
+import * as fs from 'fs';
+import * as path from 'path';
+
+require('dotenv').config({ path: path.join(__filename, '../../../.env') });
 
 const BASE_URL = process.env.STRAPI_BASE_URL;
 const TOKEN = process.env.STRAPI_TOKEN;
+const DATA_FILE = path.join(
+  __filename,
+  '../../../data',
+  process.env.CONTENT_SERVER_OUTPUT
+);
 
 if (process.argv.slice(2)[0] === '--run') {
   (async () => {
-    console.log('Fetching content ...');
+    console.log('Fetching data ...');
     const content = await fetchContent();
+
+    console.log('Writing to file ...');
+    fs.writeFileSync(DATA_FILE, JSON.stringify(content, null, 2));
+
     console.log('Fetching content complete!');
   })();
 }
@@ -28,7 +39,7 @@ export async function fetchContent() {
     return {
       metaData: cleanMetaData(rawPage.metaData),
       _id: rawPage._id,
-      path: slugs.join('/'),
+      path: `/${slugs.join('/')}`,
       title: rawPage.title,
       heading: rawPage.heading,
       intro: rawPage.intro,
@@ -45,17 +56,18 @@ export async function fetchContent() {
 
     return {
       text: page.heading,
-      href: `/${page.path === '_index' ? '' : page.path}`,
+      href: page.path,
     };
   });
 
-  const siteSettings = {
-    metaData: cleanMetaData(rawSiteSettings.metaData),
+  const settings = {
     baseTitle: rawSiteSettings.baseTitle,
+    baseUrl: rawSiteSettings.baseUrl,
+    defaultMetaData: cleanMetaData(rawSiteSettings.metaData),
   };
 
   return {
-    siteSettings,
+    settings,
     navItems,
     pages,
   };
