@@ -1,16 +1,7 @@
 import fetch from 'node-fetch';
 import * as fs from 'fs';
-import * as path from 'path';
-
-require('dotenv').config({ path: path.join(__filename, '../../../.env') });
-
-const BASE_URL = process.env.STRAPI_BASE_URL;
-const TOKEN = process.env.STRAPI_TOKEN;
-const DATA_FILE = path.join(
-  __filename,
-  '../../../data',
-  process.env.CONTENT_SERVER_OUTPUT
-);
+import markdown from './lib/markdown';
+import { DATA_FILE, STRAPI_BASE_URL, STRAPI_TOKEN } from './config';
 
 if (process.argv.slice(2)[0] === '--run') {
   (async () => {
@@ -43,7 +34,7 @@ export async function fetchContent() {
       title: rawPage.title,
       heading: rawPage.heading,
       intro: rawPage.intro,
-      body: rawPage.body,
+      body: rawPage.body && markdown(rawPage.body),
       parent: rawPage.parent?._id,
       children:
         rawPage.displayChildren &&
@@ -73,22 +64,26 @@ export async function fetchContent() {
   };
 }
 
+function strapiUrl(contentType: string) {
+  return `${STRAPI_BASE_URL}/${contentType}?token=${STRAPI_TOKEN}`;
+}
+
 async function fetchPages() {
-  const res = await fetch(`${BASE_URL}/pages?token=${TOKEN}`);
+  const res = await fetch(strapiUrl('pages'));
   const pages = await res.json();
 
   return pages;
 }
 
 async function fetchNavigation() {
-  const res = await fetch(`${BASE_URL}/navigation?token=${TOKEN}`);
+  const res = await fetch(strapiUrl('navigation'));
   const navigation = await res.json();
 
   return navigation;
 }
 
 async function fetchSiteSettings() {
-  const res = await fetch(`${BASE_URL}/site-settings?token=${TOKEN}`);
+  const res = await fetch(strapiUrl('site-settings'));
   const siteSettings = await res.json();
 
   return siteSettings;
