@@ -4,8 +4,8 @@ import { pages } from '@data-file';
 export const get: Middleware = (req, res) => {
   const slugParts = (req.params.slug as unknown) as Array<string>;
 
-  const slug = `/${slugParts.join('/')}`;
-  const page = pages.find((p) => p.slug === slug);
+  const path = `/${slugParts.join('/')}`;
+  const page = pages.find((p) => p.path === path);
 
   if (page) {
     res.writeHead(200, {

@@ -15,13 +15,13 @@
   ],
   "pages": [
     {
-      "slug": "/_index",
+      "path": "/_index",
       "heading": "Hi there!",
       "body": "This is the landing page",
       "metaData": {}
     },
     {
-      "slug": "/about",
+      "path": "/about",
       "heading": "About page",
       "body": "This is the body of the about page",
       "metaData": {
@@ -30,7 +30,7 @@
       }
     },
     {
-      "slug": "/contact",
+      "path": "/contact",
       "heading": "Contact page",
       "body": "This is the body of the contact page",
       "metaData": {
@@ -38,7 +38,7 @@
       }
     },
     {
-      "slug": "/portfolio",
+      "path": "/portfolio",
       "heading": "Portfolio",
       "body": "Here are some portfolio items. <br><br> <a rel=\"prefetch\" href=\"/portfolio/item-1\">Portolfio item 1</a>",
       "metaData": {
@@ -46,7 +46,7 @@
       }
     },
     {
-      "slug": "/portfolio/item-1",
+      "path": "/portfolio/item-1",
       "heading": "Portfolio item 1",
       "body": "This is portfolio item number 1",
       "metaData": {
@@ -54,7 +54,7 @@
       }
     },
     {
-      "slug": "/blog",
+      "path": "/blog",
       "heading": "Blog",
       "body": "Here are some things I've written!",
       "metaData": {
@@ -62,7 +62,7 @@
       }
     },
     {
-      "slug": "/blog/post-1",
+      "path": "/blog/post-1",
       "heading": "Blog post 1",
       "body": "This is blog post number 1",
       "metaData": {
@@ -70,7 +70,7 @@
       }
     },
     {
-      "slug": "/blog/strapi-and-sapper",
+      "path": "/blog/strapi-and-sapper",
       "heading": "Strapi + Sapper = ❤️",
       "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "metaData": {
