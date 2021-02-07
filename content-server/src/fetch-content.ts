@@ -20,7 +20,7 @@ export async function fetchContent() {
   const rawNavigation = await fetchNavigation();
   const rawSiteSettings = await fetchSiteSettings();
 
-  const pages = rawPages.map((rawPage: any) => {
+  let pages = rawPages.map((rawPage: any) => {
     const slugs = [rawPage.slug];
 
     if (rawPage.parent) {
@@ -29,7 +29,7 @@ export async function fetchContent() {
 
     return {
       metaData: cleanMetaData(rawPage.metaData),
-      _id: rawPage._id,
+      id: rawPage._id,
       path: `/${slugs.join('/')}`,
       title: rawPage.title,
       heading: rawPage.heading,
@@ -42,8 +42,25 @@ export async function fetchContent() {
     };
   });
 
+  pages = pages.map((page: any) => {
+    if (page.children) {
+      page.children = page.children.map((childId: string) => {
+        const childPage = pages.find((p: any) => p.id === childId);
+
+        return {
+          id: childId,
+          path: childPage.path,
+          heading: childPage.heading,
+          coverImage: childPage.coverImage,
+        };
+      });
+    }
+
+    return page;
+  });
+
   const navItems = (rawNavigation.pages || []).map((rawNavItem: any) => {
-    const page = pages.find((page: any) => page._id === rawNavItem._id);
+    const page = pages.find((page: any) => page.id === rawNavItem._id);
 
     return {
       text: page.heading,

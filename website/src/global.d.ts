@@ -14,13 +14,23 @@ declare module Website {
     ogImage: ContentTypes.Image;
   };
 
+  export type PageChild = {
+    id: string;
+    path: string;
+    heading: string;
+    coverImage: ContentTypes.Image;
+  };
+
   export type Page = {
+    id: string;
     metaData: MetaData;
+    coverImage: ContentTypes.Image;
     path: string;
     intro: string;
     heading: string;
     body: string;
     parent: string;
+    children: PageChild[];
   };
 }
 

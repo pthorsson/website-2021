@@ -3,7 +3,9 @@
 </script>
 
 <div class="root-container">
-  <Nav />
+  <div class="fixed-nav-wrapper">
+    <Nav />
+  </div>
   <main>
     <slot />
   </main>
@@ -14,6 +16,14 @@
     position: relative;
     border: var(--border-width) solid var(--color-fg);
     height: 100%;
+    overflow-x: auto;
+  }
+
+  .fixed-nav-wrapper {
+    position: fixed;
+    padding: calc(var(--baseline) * 2);
+    top: var(--baseline);
+    right: calc(var(--baseline) * 1.5);
   }
 
   main {
@@ -22,6 +32,5 @@
     padding: 2em;
     margin: 0 auto;
     padding: 25vh calc(var(--baseline) * 10) 10vh calc(var(--baseline) * 10);
-    background: salmon;
   }
 </style>

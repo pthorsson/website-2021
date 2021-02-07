@@ -14,6 +14,29 @@
   --font-mono: jetbrains-mono, monospace;
 }
 
+* {
+  scrollbar-color: var(--color-fg) var(--color-bg);
+  scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--color-fg);
+  border: 3px solid var(--color-bg);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--color-fg);
+}
+
 html,
 html[data-theme='light'] {
   --color-fg: var(--color-dark);
@@ -82,4 +105,150 @@ h6 {
 
 a {
   color: inherit;
+}
+
+.content-body li {
+  list-style-type: none;
+}
+
+.content-body li::before {
+  content: '*';
+  display: inline-block;
+  margin-left: -22px;
+  margin-right: 10px;
+  font-family: var(--font-mono);
+}
+
+.content-body p code {
+  color: green;
+  display: inline-block;
+  font-family: var(--font-mono);
+  color: var(--color-bg);
+  background: var(--color-fg);
+  padding: 1px var(--baseline);
+  font-size: 0.85em;
+  height: 100%;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
+.content-body pre {
+  background: var(--color-dark);
+  padding: calc(var(--baseline) * 1.5) calc(var(--baseline) * 2);
+  overflow-x: auto;
+  scrollbar-color: var(--color-bg) var(--color-fg);
+}
+
+.content-body pre::-webkit-scrollbar-thumb {
+  background: var(--color-bg);
+  border: 3px solid var(--color-fg);
+}
+
+.content-body pre::-webkit-scrollbar-thumb:hover {
+  background: var(--color-bg);
+}
+
+.content-body pre code[class*='language-'] {
+  color: #ccc;
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+  font-weight: 300;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+  tab-size: 2;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+.content-body :not(pre) > code[class*='language-'],
+.content-body pre[class*='language-'] {
+  background: #2d2d2d;
+}
+
+.content-body :not(pre) > code[class*='language-'] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+.content-body .token.comment,
+.content-body .token.block-comment,
+.content-body .token.prolog,
+.content-body .token.doctype,
+.content-body .token.cdata {
+  color: #999;
+}
+
+.content-body .token.punctuation {
+  color: #ccc;
+}
+
+.content-body .token.tag,
+.content-body .token.attr-name,
+.content-body .token.namespace,
+.content-body .token.deleted {
+  color: #e2777a;
+}
+
+.content-body .token.function-name {
+  color: #6196cc;
+}
+
+.content-body .token.boolean,
+.content-body .token.number,
+.content-body .token.function {
+  color: #f08d49;
+}
+
+.content-body .token.property,
+.content-body .token.class-name,
+.content-body .token.constant,
+.content-body .token.symbol {
+  color: #f8c555;
+}
+
+.content-body .token.selector,
+.content-body .token.important,
+.content-body .token.atrule,
+.content-body .token.keyword,
+.content-body .token.builtin {
+  color: #cc99cd;
+}
+
+.content-body .token.string,
+.content-body .token.char,
+.content-body .token.attr-value,
+.content-body .token.regex,
+.content-body .token.variable {
+  color: #7ec699;
+}
+
+.content-body .token.operator,
+.content-body .token.entity,
+.content-body .token.url {
+  color: #67cdcc;
+}
+
+.content-body .token.important,
+.content-body .token.bold {
+  font-weight: bold;
+}
+.content-body .token.italic {
+  font-style: italic;
+}
+
+.content-body .token.entity {
+  cursor: help;
+}
+
+.content-body .token.inserted {
+  color: green;
 }
