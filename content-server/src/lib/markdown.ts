@@ -1,15 +1,18 @@
 import * as marked from 'marked';
-import * as hljs from 'highlight.js';
+import * as prism from 'prismjs';
 
-hljs.configure({
-  tabReplace: '  ',
-  classPrefix: '',
-});
+// Load all languages in Prism
+require('prismjs/components/')();
 
 marked.setOptions({
   highlight: function (code, language) {
-    const validLanguage = hljs.getLanguage(language) ? language : 'plaintext';
-    return hljs.highlight(validLanguage, code).value;
+    const prismLanguage = prism.languages[language];
+
+    if (prismLanguage) {
+      return prism.highlight(code, prismLanguage, language);
+    }
+
+    return code;
   },
 });
 
