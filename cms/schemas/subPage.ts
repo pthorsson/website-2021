@@ -31,6 +31,7 @@ export default {
       title: 'Parent page',
       type: 'reference',
       to: [{ type: 'page' }],
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'pageBase',
