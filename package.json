@@ -7,8 +7,8 @@
     "dev": "run-p dev:*",
     "dev:website": "yarn --cwd website dev",
     "dev:cms": "yarn --cwd cms dev",
-    "dev:content-server": "yarn --cwd content-server dev",
-    "dev-cms": "run-p dev:cms",
+    "fetch-content": "yarn --cwd scripts fetch-content",
+    "build": "run-s fetch-content build:*",
     "build:website": "yarn --cwd website export"
   },
   "dependencies": {
