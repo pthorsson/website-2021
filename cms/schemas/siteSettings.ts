@@ -14,6 +14,17 @@ export default {
       type: 'string',
     },
     {
+      title: 'Navigation',
+      name: 'navigation',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'page' }, { type: 'subPage' }],
+        },
+      ],
+    },
+    {
       name: 'metaData',
       title: 'Meta data',
       type: 'metaData',

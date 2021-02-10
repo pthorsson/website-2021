@@ -17,6 +17,7 @@ import { DATA_FILE } from './lib/config';
     baseTitle: rawSiteSettings.baseTitle,
     baseUrl: rawSiteSettings.baseUrl,
     metaData: copyMetaData(rawSiteSettings.metaData),
+    navigation: rawSiteSettings.navigation || [],
   };
 
   const pages = rawPages.map((page) => ({
@@ -42,6 +43,17 @@ import { DATA_FILE } from './lib/config';
     metaData: copyMetaData(subPage.metaData),
   }));
 
+  siteSettings.navigation = siteSettings.navigation.map((navItem) => {
+    const page = [...pages, ...subPages].find(
+      (page) => page._id === navItem._ref
+    );
+
+    return {
+      text: page.heading || page.title,
+      href: page.path,
+    };
+  });
+
   const dataFileContent = JSON.stringify(
     {
       siteSettings,
@@ -62,7 +74,7 @@ function makeSubPagePath(pages, parentId, path) {
   return pages.find((page) => page._id === parentId).path + `/${path}`;
 }
 
-function copyMetaData(metaData = {} as any) {
+function copyMetaData(metaData: any = {}) {
   return {
     title: metaData?.title,
     description: metaData?.description,
@@ -73,9 +85,9 @@ function copyMetaData(metaData = {} as any) {
   };
 }
 
-function copyPageBase(pageBase = {} as any) {
+function copyPageBase(pageBase: any = {}) {
   return {
-    heading: pageBase?.title,
+    heading: pageBase?.heading,
     intro: pageBase?.intro,
     body: pageBase?.body && markdown(pageBase.body),
   };
