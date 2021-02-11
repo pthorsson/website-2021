@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { SANITY_BASE_URL, SANITY_DATASET, SANITY_TOKEN } from './config';
+import { SANITY_URL, SANITY_DATASET, SANITY_TOKEN } from './config';
 
 type SanityFetchOptions = {
   type: 'doc' | 'query';
@@ -8,18 +8,18 @@ type SanityFetchOptions = {
 };
 
 export async function sanityFetch({ type, id, query }: SanityFetchOptions) {
-  let URL = `${SANITY_BASE_URL}/${type}/${SANITY_DATASET}`;
+  let url = `${SANITY_URL}/v1/data/${type}/${SANITY_DATASET}`;
 
   if (type === 'doc' && id) {
-    URL += `/${id}`;
+    url += `/${id}`;
   }
 
   if (type === 'query' && query) {
     query = query.replace(/\s+/g, ' ');
-    URL += `?query=${encodeURIComponent(query)}`;
+    url += `?query=${encodeURIComponent(query)}`;
   }
 
-  const res = await fetch(URL, {
+  const res = await fetch(url, {
     headers: {
       Authorization: `Bearer ${SANITY_TOKEN}`,
     },
