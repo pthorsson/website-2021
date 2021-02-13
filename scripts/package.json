@@ -10,6 +10,7 @@
     "@types/marked": "^1.2.2",
     "@types/node-fetch": "^2.5.8",
     "@types/prismjs": "^1.16.2",
+    "chalk": "^4.1.0",
     "dotenv": "^8.2.0",
     "marked": "^1.2.9",
     "node-fetch": "^2.6.1",

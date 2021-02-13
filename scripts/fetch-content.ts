@@ -2,10 +2,13 @@ import * as fs from 'fs';
 import markdown from './lib/markdown';
 import { sanityFetch } from './lib/sanity-fetch';
 import { DATA_FILE } from './lib/config';
+import { logger } from './lib/logger';
+
+const log = logger('fetch-content');
 
 // Run script
 (async () => {
-  console.log('Fetching data ...');
+  log('Fetching data ...');
 
   const rawSiteSettings = await fetchSiteSettings();
   const rawPages = await fetchPages();
@@ -57,17 +60,17 @@ import { DATA_FILE } from './lib/config';
   const dataFileContent = JSON.stringify(
     {
       siteSettings,
-      pages,
-      subPages,
+      pages: [...pages, ...subPages],
     },
     null,
     2
   );
 
-  console.log('Writing data to file ...');
+  log('Writing data to file ...');
+
   fs.writeFileSync(DATA_FILE, dataFileContent);
 
-  console.log('Complete!');
+  log('Complete!');
 })();
 
 function makeSubPagePath(pages, parentId, path) {
