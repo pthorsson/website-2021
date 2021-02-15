@@ -9,7 +9,8 @@
     "dev:cms": "yarn --cwd cms dev",
     "fetch-content": "yarn --cwd scripts fetch-content",
     "build": "run-s fetch-content build:*",
-    "build:website": "yarn --cwd website export"
+    "build:website": "yarn --cwd website export",
+    "build:cms": "yarn --cwd cms build"
   },
   "dependencies": {
     "npm-run-all": "^4.1.5"
