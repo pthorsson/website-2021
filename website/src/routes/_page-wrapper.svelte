@@ -26,7 +26,7 @@
   <div class="children">
     {#each page.children as child}
       <div class="child">
-        <a class="child-link" href={child.path}>
+        <a class="child-link" href={`/${child.slug}`}>
           {child.heading}
         </a>
       </div>

@@ -1,6 +1,6 @@
 const preloadWrapper = (staticSlug?: string) =>
   async function ({ params, query }) {
-    const res = await this.fetch(`${staticSlug || params.slug.join('/')}.json`);
+    const res = await this.fetch(`${staticSlug || params.slug}.json`);
     const page = await res.json();
 
     if (res.status === 200) {

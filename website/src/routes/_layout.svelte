@@ -24,6 +24,7 @@
     padding: calc(var(--baseline) * 2);
     top: var(--baseline);
     right: calc(var(--baseline) * 1.5);
+    z-index: 999;
   }
 
   main {

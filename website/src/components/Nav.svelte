@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { navItems } from '@data-file';
+  import { siteSettings } from '@data-file';
 
   $: isOpen = false;
 
@@ -13,10 +13,13 @@
     <button class="open-menu" on:click={() => toggle(true)} />
   {/if}
   <ul class={isOpen ? 'is-open' : ''}>
-    {#each navItems as link}
-      {#if link.href && link.text}
+    {#each siteSettings.navigation as link}
+      {#if link.slug && link.text}
         <li>
-          <a rel="prefetch" href={link.href} on:click={() => toggle(false)}>
+          <a
+            rel="prefetch"
+            href={`/${link.slug}`}
+            on:click={() => toggle(false)}>
             {link.text}
           </a>
         </li>
@@ -41,7 +44,6 @@
     align-items: flex-end;
     top: 0;
     right: 0;
-    z-index: 9999;
     padding: calc(var(--baseline) * 2);
   }
 
@@ -99,7 +101,7 @@
       right: 0;
       bottom: -3px;
       border-bottom: var(--border-width) solid var(--color-fg);
-      transition: width 400ms, opacity 400ms;
+      transition: width 400ms, opacity 200ms;
     }
   }
 
@@ -113,7 +115,7 @@
     opacity: 0;
     text-decoration: none;
     overflow: hidden;
-    transition: height 400ms, opacity 400ms, padding-right 200ms;
+    transition: height 400ms, opacity 200ms, padding-right 200ms;
     flex: 0 0 auto;
     color: var(--color-fg);
     white-space: nowrap;

@@ -9,7 +9,7 @@ import metaData from './metaData';
 import pageBase from './pageBase';
 import siteSettings from './siteSettings';
 import page from './page';
-import subPage from './subPage';
+import post from './post';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -24,7 +24,7 @@ export default createSchema({
     // Documents
     siteSettings,
     page,
-    subPage,
+    post,
 
     // Objects
     pageBase,

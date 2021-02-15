@@ -1,36 +1,37 @@
 declare module Website {
-  export type Settings = {
-    baseTitle: string;
-    baseUrl: string;
-    defaultMetaData: MetaData;
+  export type SiteSettings = {
+    baseTitle?: string;
+    baseUrl?: string;
+    metaData?: MetaData;
+    navigation?: Link[];
   };
 
   export type MetaData = {
-    title: string;
-    keywords: string;
-    description: string;
-    ogTitle: string;
-    ogDescription: string;
-    ogImage: ContentTypes.Image;
+    title?: string;
+    keywords?: string;
+    description?: string;
+    ogTitle?: string;
+    ogDescription?: string;
+    ogImage?: ContentTypes.Image;
   };
 
   export type PageChild = {
     id: string;
-    path: string;
-    heading: string;
-    coverImage: ContentTypes.Image;
+    slug: string;
+    heading?: string;
+    coverImage?: ContentTypes.Image;
   };
 
   export type Page = {
     id: string;
     metaData: MetaData;
-    coverImage: ContentTypes.Image;
-    path: string;
-    intro: string;
-    heading: string;
-    body: string;
-    parent: string;
-    children: PageChild[];
+    coverImage?: ContentTypes.Image;
+    slug: string;
+    intro?: string;
+    heading?: string;
+    body?: string;
+    parent?: string;
+    children?: PageChild[];
   };
 }
 
@@ -59,7 +60,6 @@ declare module ContentTypes {
 }
 
 declare module '@data-file' {
-  export const settings: Website.Settings;
-  export const navItems: ContentTypes.Link[];
+  export const siteSettings: Website.SiteSettings;
   export const pages: Website.Page[];
 }

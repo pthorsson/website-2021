@@ -20,7 +20,7 @@ export default {
       of: [
         {
           type: 'reference',
-          to: [{ type: 'page' }, { type: 'subPage' }],
+          to: [{ type: 'page' }, { type: 'post' }],
         },
       ],
     },

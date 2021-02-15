@@ -27,5 +27,10 @@ export default {
       title: 'Meta data',
       type: 'metaData',
     },
+    {
+      title: 'Display posts',
+      name: 'displayPosts',
+      type: 'boolean',
+    },
   ],
 };

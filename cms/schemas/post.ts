@@ -1,6 +1,6 @@
 export default {
-  name: 'subPage',
-  title: 'Sub-pages',
+  name: 'post',
+  title: 'Posts',
   type: 'document',
   fields: [
     {
@@ -27,11 +27,12 @@ export default {
       },
     },
     {
-      name: 'parent',
-      title: 'Parent page',
-      type: 'reference',
-      to: [{ type: 'page' }],
-      validation: (Rule) => Rule.required(),
+      name: 'orderPriority',
+      title: 'Order priority',
+      type: 'number',
+      options: {
+        default: 0,
+      },
     },
     {
       name: 'pageBase',

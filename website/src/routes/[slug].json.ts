@@ -2,10 +2,7 @@ import { Middleware } from 'polka';
 import { pages } from '@data-file';
 
 export const get: Middleware = (req, res) => {
-  const slugParts = (req.params.slug as unknown) as Array<string>;
-
-  const path = `/${slugParts.join('/')}`;
-  const page = pages.find((p) => p.path === path);
+  const page = pages.find((p) => p.slug === req.params.slug);
 
   if (page) {
     res.writeHead(200, {
