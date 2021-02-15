@@ -1,8 +1,12 @@
 <script lang="ts">
+  import Logo from '../components/Logo.svelte';
   import Nav from '../components/Nav.svelte';
 </script>
 
 <div class="root-container">
+  <div class="fixed-logo-wrapper">
+    <Logo />
+  </div>
   <div class="fixed-nav-wrapper">
     <Nav />
   </div>
@@ -17,6 +21,14 @@
     border: var(--border-width) solid var(--color-fg);
     height: 100%;
     overflow-x: auto;
+  }
+
+  .fixed-logo-wrapper {
+    position: fixed;
+    padding: calc(var(--baseline) * 2);
+    top: var(--baseline);
+    left: calc(var(--baseline) * 1.5);
+    z-index: 999;
   }
 
   .fixed-nav-wrapper {
