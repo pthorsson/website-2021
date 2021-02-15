@@ -1,15 +1,12 @@
 <script lang="ts">
-  import { settings } from '@data-file';
+  import { siteSettings } from '@data-file';
 
-  export let siteSettings = settings as Partial<Website.Settings>;
   export let pageMetaData: Partial<Website.MetaData>;
 
-  const defaultMetaData = settings.defaultMetaData as Partial<Website.MetaData>;
+  const defaultMetaData = siteSettings.metaData;
 
   $: pageTitle = pageMetaData?.title || defaultMetaData?.title || null;
-  $: siteTitle = `${siteSettings?.baseTitle}${
-    pageTitle ? ` | ${pageTitle}` : ''
-  }`;
+  $: siteTitle = (pageTitle ? `${pageTitle} – ` : '') + siteSettings?.baseTitle;
 
   let siteDescription =
     pageMetaData?.description || defaultMetaData?.description;
